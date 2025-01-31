@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Perfect Moment ✨</title>
+    <style>
+        :root {
+            --mint: #B2F2BB;
+            --dark-mint: #69C97B;
+            --twilight: #2E294E;
+        }
+
+        body {
+            background: linear-gradient(rgba(46, 41, 78, 0.9), rgba(70, 65, 105, 0.9)),
+                        url('your-image.jpg') center/cover no-repeat fixed;
+            font-family: 'Georgia', serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            color: var(--twilight);
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem;
+            border-radius: 20px;
+            border: 2px solid var(--mint);
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 0 30px rgba(178, 242, 187, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .song-lyric {
+            font-style: italic;
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+            color: var(--dark-mint);
+            line-height: 1.5;
+        }
+
+        .discrete-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 1rem auto;
+            border: 2px solid var(--mint);
+            background: url('your-image.jpg') center/cover;
+            box-shadow: 0 0 20px rgba(178, 242, 187, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .discrete-photo:hover {
+            transform: scale(1.05);
+        }
+
+        .proposal-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 1.5rem 0;
+            color: var(--twilight);
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .response-btn {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            border: 2px solid var(--mint);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--mint);
+            color: var(--twilight);
+        }
+
+        .response-btn:hover {
+            background: var(--dark-mint);
+            transform: translateY(-2px);
+        }
+
+        #musicPlayer {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--mint);
+            width: 90%;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        audio {
+            width: 100%;
+        }
+
+        .emoji {
+            font-size: 1.2em;
+            margin: 0 2px;
+        }
+
+        @media (max-width: 400px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .song-lyric {
+                font-size: 1rem;
+            }
+            
+            .proposal-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="discrete-photo"></div>
+        
+        <div class="song-lyric">
+            "Darling, just hold my hand 🤝<br>
+            Be my girl, I'll be your man 💑"<br>
+            - Ed Sheeran, Perfect 🎵
+        </div>
+
+        <p class="proposal-text">
+            Alice, every moment with you feels like the lyrics of our favorite song 🎶<br><br>
+            This Valentine's, I want to create our own perfect verse... ✍️<br><br>
+            Would you let me take you on an adventure where we can<br>
+            <span style="color: var(--dark-mint)">"dance in the dark beneath the starlight"? 🌌✨</span>
+        </p>
+
+        <div class="action-buttons">
+            <button class="response-btn" id="yesBtn">Write Our Verse Together 📖💚</button>
+            <button class="response-btn" id="noBtn">Let the Song Play On 🎧➡️</button>
+        </div>
+    </div>
+
+    <div id="musicPlayer">
+        <audio controls id="perfectSong">
+            <source src="perfect.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const audio = document.getElementById('perfectSong');
+        let noCount = 0;
+
+        // Yes button interaction
+        yesBtn.addEventListener('click', () => {
+            document.body.style.background = "linear-gradient(rgba(46, 41, 78, 0.95), rgba(70, 65, 105, 0.95)), url('your-image.jpg') center/cover fixed";
+            document.querySelector('.container').innerHTML = `
+                <h2 style="color: var(--dark-mint)">Our Next Verse Begins... 🌠💚</h2>
+                <div class="discrete-photo" style="width: 140px; height: 140px;"></div>
+                <p class="proposal-text">
+                    February 14th 📅 - Let's create memories that will<br>
+                    make even Ed Sheeran jealous of our story 🎶💕<br><br>
+                    Be ready for surprises under the stars... 🌟🔭
+                </p>
+            `;
+            audio.volume = 1.0; // Full volume
+            audio.play();
+        });
+
+        // No button interaction
+        noBtn.addEventListener('touchstart', () => {
+            noCount++;
+            const lyrics = [
+                "Are you sure? The night is young... 🌙",
+                "We could be listening to this song together 🎧💞",
+                "Our story's just beginning 📖✨",
+                "This could be our perfect first chapter 💌",
+                "I see you're enjoying the song... 🎶",
+                "Let's make this Valentine's special 💖",
+                "You're my favorite duet partner 🎤",
+                "Just say yes, and let's dance 💃🕺"
+            ];
+            
+            if (noCount < lyrics.length) {
+                noBtn.innerHTML = `${lyrics[noCount - 1]}`;
+            } else {
+                noBtn.innerHTML = "Okay, you win my heart! 💘";
+                noBtn.disabled = true;
+                setTimeout(() => {
+                    yesBtn.click(); // Trigger the "Yes" response
+                }, 2000);
+            }
+            
+            // Play the song softly
+            audio.volume = 0.5;
+            audio.play();
+        });
+
+        noBtn.addEventListener('touchend', () => {
+            if (noCount < lyrics.length) {
+                noBtn.innerHTML = "Let the Song Play On 🎧➡️";
+            }
+            noBtn.style.backgroundColor = "var(--mint)";
+        });
+    </script>
+</body>
+</html>
